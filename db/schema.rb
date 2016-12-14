@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20161208131729) do
 
   create_table "customers", force: :cascade do |t|
-    t.string   "familly_name", null: false
-    t.string   "given_name",   null: false
-    t.string   "email",        null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "family_name", null: false
+    t.string   "given_name",  null: false
+    t.string   "email",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true

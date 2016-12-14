@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new
   end
 
-  def creat
+  def create
     @customer = Customer.new(customer_params)
     @customer.save
     redirect_to @customer
@@ -19,6 +19,7 @@ class CustomersController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(params[:id])
   end
 
   def destroy
