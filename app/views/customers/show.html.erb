@@ -3,9 +3,13 @@
         <h1>顧客詳細</h1>
         <dt>お名前</dt>
         <!--*** <%= @customer.family_name %> <%=@customer.given_name %>を<%= @customer.full_name %>に変更-->
-        <dd style="margin:0px 0pc 10px 20px"><%= @customer.full_name %></dd>
+        <dd style="margin:0px 0px 10px 20px"><%= @customer.full_name %></dd>
         <dt>電子メール</dt>
         <dd style="margin:0px 0px 10px 20px"><%= @customer.email %></dd>
+        <dt>会社名</dt>
+        <dd style="margin: 0px 0px 10px 20px"><%= @customer.company.name %></dd>
+        <dt>役職名</dt>
+        <dd style="margin: 0px 0px 10px 20px"><%= @customer.post.position_name %></dd>
         <%= link_to '編集', edit_customer_path(@customer), class: "btn btn-default" %>
         <%= link_to '戻る', customers_path, class:"btn btn-default" %>
     </div>
