@@ -39,9 +39,9 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @comment = Comment.new #これをform_forで使う
+    @comment = Comment.new
     # @comments = Comment.where(customer_id: params[:id].to_i)
-    @comments = @customer.comments #commentsメソッドっぽいやつの正体はなに？
+    @comments = @customer.comments #commentsはアソシエーションで紐付いたやつだよ
   end
 
   def destroy
