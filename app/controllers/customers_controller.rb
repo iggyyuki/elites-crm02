@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
   
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy]
   
   def index
     # @customers = Customer.all
@@ -27,11 +28,9 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to @customer
     else
@@ -40,19 +39,21 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
-    @comment = Comment.new #これをform_forで使う
+    @comment = Comment.new
     # @comments = Comment.where(customer_id: params[:id].to_i)
-    @comments = @customer.comments #commentsメソッドっぽいやつの正体はなに？
+    @comments = @customer.comments #commentsはアソシエーションで紐付いたやつだよ
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
     @customer.destroy
     redirect_to root_path
   end
   
   private
+  
+    def set_customer
+      @customer = Customer.find(params[:id])
+    end
 
     def customer_params
       params.require(:customer).permit(
