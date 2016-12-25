@@ -14,6 +14,21 @@
         
         <hr>
         
+         <h2>対応履歴</h2>
+             <% @comments.each do |comment| %>
+             <div class="media">
+                 <div class="media-left">
+                     <%= image_tag current_user.image_url, width: "64", class: "image-object" ,alt: "プロフィール"  %>
+                 </div>
+                 <div class="media-body">
+                     <%= simple_format(comment.body) %>
+                     <p class="text-muted">
+                         投稿記事:<%= comment.created_at.strftime( '%Y%m%d %H:%M') %>
+                         <%= link_to "削除する", comment_path(comment), method: :delete %>
+                     </p>
+                 </div>
+             </div>
+             <% end %>
         
         <%= form_for(@comment, url: { controller: :comments, action: :create })  do |f| %>
             
@@ -30,9 +45,10 @@
             　</div>
           　<% end %>
             
-            
+            <hr>
+            <%= image_tag current_user.image_url, width: "64", class: "image-object" ,alt: "プロフィール"  %>
             <div class="form-group">
-                <%= f.label :body, class: "form-control" %>
+                <%= f.label :body, '対応内容'  %>
                 <%= f.text_area :body, class: "form-control" %>
             </div>
             <%= f.hidden_field :customer_id, value: @customer.id %>
