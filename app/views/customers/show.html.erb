@@ -18,7 +18,7 @@
              <% @comments.each do |comment| %>
              <div class="media">
                  <div class="media-left">
-                     <%= image_tag current_user.image_url, width: "64", class: "image-object" ,alt: "プロフィール"  %>
+                     <%= image_tag comment.user.image_url, width: "64", class: "image-object" ,alt: "プロフィール"  %>
                  </div>
                  <div class="media-body">
                      <%= simple_format(comment.body) %>
